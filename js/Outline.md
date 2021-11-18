@@ -5,3 +5,5 @@
   * [DOM](./Dom.md)
   * [BOM](Bom.md)
 * HTML中的JavaScript
+* [JavaScript设计模式](./Design.md)
+* [JavaScript算法](./Algorithm.md)
