@@ -29,17 +29,34 @@
     * 条件语句
     * 循环语句
 * JavaScript标准库
-  * 包装对象
+  * 包装对象（基本应用类型）
+    * 概念
+    * Boolean对象
+    * Number对象
+    * String对象
+    * Symbol对象
+  * 集合与映射
+    * Set
+    * WeakSet
+    * Map
+    * WeakMap
+    * WeakRef（ES2021）
+    * FinalizationRegistry （ES2021）
+  * 定型数组与二进制数组（ES2011）
   * Math对象
   * Date对象
   * RegExp对象
   * JSON对象
+  * 国际化API
+  * 控制台API
+  * URL API
 * 对象
 * 数组
 * 函数
 * 作用域
 * 类
-* 面向对象编程
+* 面向对象编程（针对类和构造函数）
+* 模块
 * 迭代器与生成器
   * 理解迭代
   * 迭代器模式
