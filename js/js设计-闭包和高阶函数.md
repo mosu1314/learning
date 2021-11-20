@@ -467,8 +467,6 @@
     var obj,
         t;
     
-    var len = any.length;
-
     var start = function() {
       for ( var i = 0; i < Math.min( count || 1, ary.length ); i++ ) {
         var obj = ary.shift();
