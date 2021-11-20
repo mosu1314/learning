@@ -321,7 +321,7 @@
   ```js
     // 基本需求，每次都需要计算
     var monthlyCost = 0; 
-    var const = function( money ) {
+    var cost = function( money ) {
       monthlyCost += money;
     };
 
