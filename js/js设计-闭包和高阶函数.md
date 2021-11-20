@@ -427,6 +427,7 @@
   Function.prototype.uncurrying  = function() {
     var self = this;
     return function() {
+			// 巧妙在call和apply之间转换
       return Function.prototype.call.apply( self, arguments );
     }
   };
