@@ -359,7 +359,7 @@
 
       return function() {
         if ( arguments.length === 0 ) {
-          return fn.apply( this, args );
+          return fn( args );
         } else {
           [].push.apply( args, arguments );
           return arguments.callee;
