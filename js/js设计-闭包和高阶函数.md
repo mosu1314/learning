@@ -464,8 +464,6 @@
 * 分时函数
   ```js
   var timeChunk = function( ary, fn, count ) {
-    var obj,
-        t;
     
     var start = function() {
       for ( var i = 0; i < Math.min( count || 1, ary.length ); i++ ) {
@@ -475,8 +473,9 @@
     };
 
     return function() {
-      t = setInterval(function() {
+      var t = setInterval(function() {
         if ( ary.length === 0 ) {
+          start = null;
           return clearInterval( t );
         }
         start();
