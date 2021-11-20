@@ -112,7 +112,7 @@ console.log( a === b );
 
 ```
 
-惰性单例
+惰性单例：只有需要时才创建
 ```js
 // 这段代码仍然违反单一职责原则，创建对象和管理单例的逻辑都放在createLoginLayer对象内部。
 var CreateLoginLayer = (function() {
