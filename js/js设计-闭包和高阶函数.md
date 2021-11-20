@@ -386,7 +386,7 @@
   ```
 * uncurrying 借方法
   ```js
-  Function.prototype.uncurring = function() {
+  Function.prototype.uncurrying = function() {
     var self = this;
     return function() {
       var obj = Array.prototype.shift.call( arguments );
@@ -522,5 +522,6 @@
     }
 
     addEvent( elem, type, handler );
+		// TODO 测试一下模块化，导出可会产生问题
   };
   ```
