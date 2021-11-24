@@ -7,3 +7,4 @@
 * HTML中的JavaScript
 * [JavaScript设计模式](./Design.md)
 * [JavaScript算法](./Algorithm.md)
+* [代码编写语录](./CodeWordRecord.md)
