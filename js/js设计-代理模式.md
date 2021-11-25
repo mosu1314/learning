@@ -142,7 +142,7 @@ miniConsole = {
 缓存代理
 ```js
 // 针对一些开销大的运算结果提供暂时的储存
-ar mult = function() {
+var mult = function() {
   console.log( '开始计算乘积' );
   var a = 1;
   for ( var i = 0, l = arguments.length; i < l; i++ ) {
