@@ -143,7 +143,7 @@ each( [ 1, 2, 3, 4, 5 ], function( i, n ) {
 ## 迭代器模式的应用举例
 减少了分支语句的纠缠
 ```js
-va getActiveUploadObj = function() {
+var getActiveUploadObj = function() {
   try {
     return new ActiveXObject( 'TXFTNActiveX.FTNUpload' ); // IE上传控件
   } catch ( e ) {
