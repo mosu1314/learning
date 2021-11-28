@@ -115,5 +115,89 @@ File.prototype.add = function() {
   throw new Error( '文件下面不能再添加文件' );
 };
 
-
 ```
+
+* 组合模式不是父子关系
+  是一种HAS_A聚合关系，而不是IS-A
+* 对叶对象操作的一致性
+* 双向映射关系
+* 用职责链模式提高组合模式性能
+
+引用父对象
+```js
+var Folder = function( name ) {
+  this.name = name;
+  this.parent = null;
+  this.files = [];
+};
+
+Folder.prototype.add = function( file ) {
+  file.parent = this;
+  this.files.push( file );
+};
+
+Folder.prototype.scan = function() {
+  console.log( '开始扫描文件夹：' + this.name );
+  for ( var i = 0, file, files = this.files; file = files[ i++ ] ) {
+    file.scan();
+  }
+}
+
+Folder.prototype.remove = function() {
+  if ( !this.parent ) { // 根节点或者树外的游离节点
+    return;
+  }
+
+  for ( var files = this.parent.files, l = files.length - 1; l >= 0; l-- ) {
+    var file = files[ l ];
+    if ( file = this ) {
+      files.splice( l, 1 );
+    }
+  } 
+};
+
+
+//  File类的实现
+var File = function( name ) {
+  this.name = name;
+  this.parent = null;
+};
+
+File.prototype.add = function() {
+  throw new Error( '不能添加在文件夹下面' );
+};
+
+File.prototype.scan = function() {
+  console.log( '开始扫描文件：' + this.name );
+};
+
+File.prototype.remove = function() {
+  // 根节点或者树外的游离节点
+  if ( !this.parent ) {
+    return;
+  }
+  for ( var files = this.parent.files, l = files.length - 1; l >= 0; l-- ) {
+    var file = files[ l ];
+    if ( file === this ) {
+      files.splice( l, 1 );
+    }
+  }
+}
+
+var folder = new Folder( '学习资料' );
+var folder1 = new Folder( 'JavaScript' );
+var file1 = new File( '深入浅出Node.js' );
+folder1.add( new File( 'JavaScript设计模式与开发实践' ));
+folder.add( folder1 );
+folder.add( file1 );
+
+folder.remove();  // 移除文件夹
+folder.scan(); 
+```
+
+
+## 何时使用组合模式
+* 表示对象的部分-整体层次结构
+* 客户希望统一树中的所有的对象
+
+
