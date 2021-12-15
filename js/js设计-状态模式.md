@@ -258,3 +258,105 @@ setTimeout( function() {
 }, 5000 );
 
 ```
+
+# 状态模式的优缺点
+优点：
+* 状态模式定义了状态与行为之间的关系，并将它们封装在一个类里。通过增加新的状态类，很容易增加新的状态和转换。
+* 避免Context无限膨胀，状态切换的逻辑被分布在状态类，也去掉了Context中原本过多的条件分支。
+* 用对象代替字符串来记录当前状态，使得状态的切换更加一目了然。
+* Context中的请求动作和状态类中封装的行为可以非常容易地独立变化而互不影响。
+
+缺点：
+* 会在系统中定义许多状态类
+* 逻辑分散在状态类中
+
+# 状态模式和策略模式
+
+# JavaScript版本的状态机
+
+```js
+var Light = function() {
+  this.currState = FSM.off;
+  this.button = null;
+};
+
+Light.prototype.init = function() {
+  var button = document.createElement( 'button' ),
+  self = this;
+
+  button.innerHTML = '已关灯';
+  this.button = document.body.appendChild( button );
+
+  this.button.onclick = function() {
+    self.currState.buttonWasPressed.call( self );
+  }
+};
+
+var FSM = {
+  off: {
+    buttonWasPressed: function() {
+      console.log( '关灯' );
+      this.button.innerHTML = '下一次按我是开灯';
+      this.currState = FSM.on;
+    }
+  },
+  on: {
+    buttonWasPressed: function() {
+      console.log( '开灯' );
+      this.innerHTML = '下一次按我是关灯';
+      this.currState = FSM.off;
+    }
+  }
+};
+
+
+// 函数式
+
+var delegate = function( client, delegation ) {
+  return {
+    buttonWasPressed: function() {
+      return delegation.buttonWasPressed.apply( client, arguments );
+    }
+  }
+};
+
+var FSM = {
+  off: {
+    buttonWasPressed: function() {
+      console.log( '关灯' );
+      this.button.innerHTML = '下一次按我是开灯';
+      this.currState = this.onState;
+    }
+  },
+  on: {
+    buttonWasPressed: function() {
+      console.log( '开灯' );
+      this.button.innerHTML = '下一次按我是关灯';
+      this.currState = this.offState;
+    }
+  }
+};
+
+var Light = function() {
+  this.offState = delegate( this, FSM.off );
+  this.onState = delegate( this, FSM.on );
+  this.currState = this.offState;
+  this.button = null;
+};
+
+Light.prototype.init = function() {
+  var button = document.createElement( 'button' ),
+  self = this;
+
+  button.innerHTML = '已关灯';
+  this.button = document.body.appendChild( button );
+  this.button.onclick = function() {
+    self.currState.buttonWasPressed();
+  }
+};
+
+var light = new Light();
+light.init();
+```
+
+# 表驱动的有限状态机
