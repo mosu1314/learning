@@ -16,12 +16,15 @@
   * 多用组合少用继承
   * 贫血模式和充血模式
 * 设计原则（SOLID）
-  * SRP单一职责原则
-  * OCP开闭原则
-  * LSP里式替换原则
-  * ISP接口隔离原则
-  * DIP依赖倒置原则
-  * DRY原则、KISS原则、YAGNI原则、LOD法则 
+  * [SRP单一职责原则](./SRP单一职责原则.md)
+  * [OCP开闭原则](./OCP开闭原则.md)
+  * [LSP里式替换原则](./LSP里式替换原则.md)
+  * [ISP接口隔离原则](./ISP接口隔离原则.md)
+  * [DIP依赖倒置原则](./DIP依赖倒置原则.md)
+  * [DRY原则](./DRY原则.md)
+  * [KISS原则](./KISS原则.md)
+  * [YAGNI原则](./YAGNI原则.md)
+  * [LOD法则](./LOD法则.md)
 * 设计模式
   * 创建型
     * 常用
